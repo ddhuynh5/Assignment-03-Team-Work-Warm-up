@@ -2,14 +2,6 @@ package com.example.assignement03;
 
 import android.content.Context;
 import android.graphics.Point;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.SurfaceView;
-
-import java.util.ArrayList;
-
-import android.content.Context;
-import android.graphics.Point;
 import android.graphics.PointF;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -31,6 +23,7 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
     Renderer mRenderer;
     ParticleSystem mParticleSystem;
     PhysicsEngine mPhysicsEngine;
+    Level mLevel;
 
 
     public GameEngine(Context context, Point size) {
@@ -47,6 +40,7 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
         // Even just 10 particles look good
         // But why have less when you can have more
         mParticleSystem.init(1000);
+        mLevel = new Level(context, new PointF(size.x, size.y), this);
 
     }
     // For the game engine broadcaster interface
@@ -61,13 +55,14 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
     public void run() {
         while (mGameState.getThreadRunning()) {
             long frameStartTime = System.currentTimeMillis();
+            ArrayList<GameObject> objects = mLevel.getGameObjects();
 
             if (!mGameState.getPaused()) {
                 // Update all the game objects here
                 // in a new way
 
                 // This call to update will evolve with the project
-                if(mPhysicsEngine.update(mFPS, mParticleSystem)) {
+                if(mPhysicsEngine.update(mFPS,objects, mGameState, mSoundEngine, mParticleSystem)){
                     // Player hit
                     deSpawnReSpawn();
                 }
@@ -76,8 +71,7 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
 
             // Draw all the game objects here
             // in a new way
-            //mRenderer.draw(mGameState, mHUD);
-            mRenderer.draw(mGameState, mHUD, mParticleSystem);
+            mRenderer.draw(objects, mGameState, mHUD, mParticleSystem);
 
             // Measure the frames per second in the usual way
             long timeThisFrame = System.currentTimeMillis()
@@ -122,5 +116,17 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
     public void deSpawnReSpawn() {
         // Eventually this will despawn
         // and then respawn all the game objects
+        ArrayList<GameObject> objects = mLevel.getGameObjects();
+
+        for(GameObject o : objects){
+            o.setInactive();
+        }
+        objects.get(Level.PLAYER_INDEX)
+                .spawn(objects.get(Level.PLAYER_INDEX)
+                        .getTransform());
+
+        objects.get(Level.BACKGROUND_INDEX)
+                .spawn(objects.get(Level.PLAYER_INDEX)
+                        .getTransform());
     }
 }

@@ -18,7 +18,7 @@ class Renderer {
         mPaint = new Paint();
     }
 
-    void draw(GameState gs, HUD hud, ParticleSystem ps) {
+    void draw(ArrayList<GameObject> objects, GameState gs, HUD hud, ParticleSystem ps) {
         if (mSurfaceHolder.getSurface().isValid()) {
             mCanvas = mSurfaceHolder.lockCanvas();
             mCanvas.drawColor(Color.argb(255, 0, 0, 0));

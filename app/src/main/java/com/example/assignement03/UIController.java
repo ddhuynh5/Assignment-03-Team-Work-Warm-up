@@ -51,5 +51,4 @@ class UIController implements InputObserver {
             }
         }
     }
-
 }
