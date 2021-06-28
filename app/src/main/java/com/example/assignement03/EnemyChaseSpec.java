@@ -13,8 +13,8 @@ public class EnemyChaseSpec extends ObjectSpec{
 
     private static final String[] components = new String [] {
             "StdGraphicsComponent",
-            "AlienChaseMovementComponent",
-            "AlienHorizontalSpawnComponent"};
+            "EnemyChaseMovementComponent",
+            "EnemyHorizontalSpawnComponent"};
 
     EnemyChaseSpec(){
         super(tag, bitmapName,
