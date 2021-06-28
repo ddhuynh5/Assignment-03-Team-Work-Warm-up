@@ -1,6 +1,5 @@
 package com.example.assignement03;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -15,7 +14,10 @@ public class GameActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        Display display = getWindowManager().getDefaultDisplay();
+
+        Display display = getWindowManager()
+                .getDefaultDisplay();
+
         Point size = new Point();
         display.getSize(size);
         mGameEngine = new GameEngine(this, size);
@@ -23,13 +25,13 @@ public class GameActivity extends Activity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         mGameEngine.startThread();
     }
 
     @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
         mGameEngine.stopThread();
     }

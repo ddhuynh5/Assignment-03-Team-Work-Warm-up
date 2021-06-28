@@ -20,7 +20,7 @@ final class GameState {
     // This is how we will make all the high scores persist
     private SharedPreferences.Editor mEditor;
 
-    GameState(GameStarter gs, Context context) {
+    GameState(GameStarter gs, Context context){
         // This initializes the gameStarter reference
         gameStarter = gs;
 
@@ -38,10 +38,10 @@ final class GameState {
         mHighScore = prefs.getInt("hi_score", 0);
     }
 
-    private void endGame() {
+    private void endGame(){
         mGameOver = true;
         mPaused = true;
-        if (mScore > mHighScore) {
+        if(mScore > mHighScore){
             mHighScore = mScore;
             // Save high score
             mEditor.putInt("hi_score", mHighScore);
@@ -49,7 +49,7 @@ final class GameState {
         }
     }
 
-    void startNewGame() {
+    void startNewGame(){
         mScore = 0;
         mNumShips = 3;
         // Don't want to be drawing objects
@@ -64,59 +64,59 @@ final class GameState {
     }
 
 
-    void loseLife(SoundEngine se) {
+    void loseLife(SoundEngine se){
         mNumShips--;
         se.playPlayerExplode();
-        if (mNumShips == 0) {
+        if(mNumShips == 0){
             pause();
             endGame();
         }
     }
 
-    int getNumShips() {
+    int getNumShips(){
         return mNumShips;
     }
 
-    void increaseScore() {
+    void increaseScore(){
         mScore++;
     }
 
-    int getScore() {
+    int getScore(){
         return mScore;
     }
 
-    int getHighScore() {
+    int getHighScore(){
         return mHighScore;
     }
 
-    void pause() {
+    void pause(){
         mPaused = true;
     }
 
-    void resume() {
+    void resume(){
         mGameOver = false;
         mPaused = false;
     }
 
-    void stopEverything() {
+    void stopEverything(){
         mPaused = true;
         mGameOver = true;
         mThreadRunning = false;
     }
 
-    boolean getThreadRunning() {
+    boolean getThreadRunning(){
         return mThreadRunning;
     }
 
-    void startThread() {
+    void startThread(){
         mThreadRunning = true;
     }
 
-    private void stopDrawing() {
+    private void stopDrawing(){
         mDrawing = false;
     }
 
-    private void startDrawing() {
+    private void startDrawing(){
         mDrawing = true;
     }
 
@@ -124,11 +124,14 @@ final class GameState {
         return mDrawing;
     }
 
-    boolean getPaused() {
+    boolean getPaused(){
         return mPaused;
     }
 
-    boolean getGameOver() {
+    boolean getGameOver(){
         return mGameOver;
     }
+
+
+
 }
