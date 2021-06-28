@@ -14,13 +14,13 @@ class Level {
     public static final int LAST_PLAYER_LASER = 4;
     public static int mNextPlayerLaser;*/
     public static final int FIRST_ENEMY = 5;
-    /*public static final int SECOND_ALIEN = 6;
-    public static final int THIRD_ALIEN = 7;
-    public static final int FOURTH_ALIEN = 8;
-    public static final int FIFTH_ALIEN = 9;
-    public static final int SIXTH_ALIEN = 10;
-    public static final int LAST_ALIEN = 10;
-    public static final int FIRST_ALIEN_LASER = 11;
+    /*public static final int SECOND_ENEMY = 6;
+    public static final int THIRD_ENEMY = 7;
+    public static final int FOURTH_ENEMY = 8;
+    public static final int FIFTH_ENEMY = 9;
+    public static final int SIXTH_ENEMY = 10;*/
+    public static final int LAST_ENEMY = 10;
+    /*public static final int FIRST_ALIEN_LASER = 11;
     public static final int LAST_ALIEN_LASER = 15;
     public static int mNextAlienLaser;*/
 
@@ -57,9 +57,9 @@ class Level {
 
         //mNextPlayerLaser = FIRST_PLAYER_LASER;
 
-        // Create some aliens
-
-        // Create some alien lasers
+        // Create enemy
+        objects.add(FIRST_ENEMY, factory
+                .create(new EnemyChaseSpec()));
 
         return objects;
     }

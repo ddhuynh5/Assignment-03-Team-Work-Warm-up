@@ -128,5 +128,13 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
         objects.get(Level.BACKGROUND_INDEX)
                 .spawn(objects.get(Level.PLAYER_INDEX)
                         .getTransform());
+
+        for (int i = Level.FIRST_ENEMY;
+             i != Level.LAST_ENEMY + 1; i++) {
+
+            objects.get(i).spawn(objects
+                    .get(Level.PLAYER_INDEX).getTransform());
+        }
+
     }
 }
