@@ -53,7 +53,15 @@ class PlayerInputComponent implements InputComponent,
                 } else if (buttons.get(HUD.DOWN).contains(x,y)) {
                     // Player has pressed down
                     mTransform.headDown();
-                } else if (buttons.get(HUD.FLIP).contains(x,y)) {
+                } else if (buttons.get(HUD.LEFT).contains(x,y)){
+                    // Player has pressed left
+                    mTransform.headLeft();
+                }
+                else if (buttons.get(HUD.RIGHT).contains(x,y)){
+                    // Player has pressed right
+                    mTransform.headRight();
+                }
+                else if (buttons.get(HUD.FLIP).contains(x,y)) {
                     // Player has released the flip button
                     mTransform.flip();
                 } else if (buttons.get(HUD.SHOOT).contains(x,y)) {

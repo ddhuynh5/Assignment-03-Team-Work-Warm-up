@@ -17,9 +17,11 @@ class HUD {
 
     static int UP = 0;
     static int DOWN = 1;
-    static int FLIP = 2;
-    static int SHOOT = 3;
-    static int PAUSE = 4;
+    static int LEFT = 2;
+    static int RIGHT = 3;
+    static int FLIP = 4;
+    static int SHOOT = 5;
+    static int PAUSE = 6;
 
     HUD(Point size){
         mScreenHeight = size.y;
@@ -35,19 +37,32 @@ class HUD {
         int buttonPadding = mScreenWidth / 90;
 
         Rect up = new Rect(
-                buttonPadding,
+                buttonWidth,
                 mScreenHeight - (buttonHeight * 2)
                         - (buttonPadding * 2),
-                buttonWidth + buttonPadding,
+                buttonWidth + buttonPadding*5,
                 mScreenHeight - buttonHeight -
                         (buttonPadding *2));
 
         Rect down = new Rect(
-                buttonPadding,
+                buttonWidth,
                 mScreenHeight - buttonHeight -
                         buttonPadding,
-                buttonWidth + buttonPadding,
+                buttonWidth + buttonPadding*5,
                 mScreenHeight - buttonPadding);
+
+        Rect left = new Rect(
+                buttonPadding,
+                mScreenHeight - buttonPadding*3 - buttonHeight,
+                buttonWidth - buttonPadding,
+                mScreenHeight - buttonPadding*3);
+
+        Rect right = new Rect(
+                buttonPadding + buttonWidth + buttonHeight,
+                mScreenHeight - buttonPadding*3 - buttonHeight,
+                mScreenWidth - buttonPadding*10 - buttonWidth*10,
+                mScreenHeight - buttonPadding*3);
+
 
         Rect flip = new Rect(mScreenWidth -
                 buttonPadding - buttonWidth,
@@ -74,6 +89,8 @@ class HUD {
         controls = new ArrayList<>();
         controls.add(UP,up);
         controls.add(DOWN,down);
+        controls.add(LEFT, left);
+        controls.add(RIGHT, right);
         controls.add(FLIP, flip);
         controls.add(SHOOT, shoot);
         controls.add(PAUSE, pause);

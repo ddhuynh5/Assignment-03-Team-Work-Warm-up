@@ -13,10 +13,10 @@ class PlayerMovementComponent implements MovementComponent {
         PointF location = t.getLocation();
         // How fast is it going
         float speed = t.getSpeed();
-        // How tall is the ship
+        // How tall is the player
         float height = t.getObjectHeight();
 
-        // Move the ship up or down if needed
+        // Move the player up or down if needed
         if(t.headingDown()){
             location.y += speed / fps;
         }
@@ -24,7 +24,15 @@ class PlayerMovementComponent implements MovementComponent {
             location.y -= speed / fps;
         }
 
-        // Make sure the ship can't go off the screen
+        // Move the player right or left
+        if (t.headingRight()){
+            location.x += speed / fps;
+        }
+        else if (t.headingLeft()){
+            location.x -= speed / fps;
+        }
+
+        // Make sure the player can't go off the screen
         if(location.y > screenHeight - height){
             location.y = screenHeight - height;
         }
