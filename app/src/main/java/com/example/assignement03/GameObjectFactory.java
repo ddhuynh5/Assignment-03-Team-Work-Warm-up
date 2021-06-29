@@ -55,15 +55,15 @@ class GameObjectFactory {
                 case "PlayerMovementComponent":
                     object.setMovement(new PlayerMovementComponent());
                     break;
-                /*case "LaserMovementComponent":
+                case "LaserMovementComponent":
                     object.setMovement(new LaserMovementComponent());
-                    break;*/
+                    break;
                 case "PlayerSpawnComponent":
                     object.setSpawner(new PlayerSpawnComponent());
                     break;
-                /*case "LaserSpawnComponent":
+                case "LaserSpawnComponent":
                     object.setSpawner(new LaserSpawnComponent());
-                    break;*/
+                    break;
                 case "BackgroundGraphicsComponent":
                     object.setGraphics(new BackgroundGraphicsComponent(),
                             mContext, spec, objectSize);
@@ -76,7 +76,7 @@ class GameObjectFactory {
                     break;
                 case "EnemyChaseMovementComponent":
                     object.setMovement(
-                            new EnemyChaseMovementComponent());
+                            new EnemyChaseMovementComponent(mGameEngineReference));
                     break;
                 case "EnemyHorizontalSpawnComponent":
                     object.setSpawner(

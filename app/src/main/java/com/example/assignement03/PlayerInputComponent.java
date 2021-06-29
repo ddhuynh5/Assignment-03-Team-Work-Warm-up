@@ -9,12 +9,12 @@ class PlayerInputComponent implements InputComponent,
         InputObserver {
 
     private Transform mTransform;
-    //private PlayerLaserSpawner mPLS;
+    private PlayerLaserSpawner mPLS;
 
     PlayerInputComponent(GameEngine ger) {
 
         ger.addObserver(this);
-        //mPLS = ger;
+        mPLS = ger;
 
     }
 
@@ -56,9 +56,9 @@ class PlayerInputComponent implements InputComponent,
                 } else if (buttons.get(HUD.FLIP).contains(x,y)) {
                     // Player has released the flip button
                     mTransform.flip();
-                } /*else if (buttons.get(HUD.SHOOT).contains(x,y)) {
+                } else if (buttons.get(HUD.SHOOT).contains(x,y)) {
                     mPLS.spawnPlayerLaser(mTransform);
-                }*/
+                }
                 break;
 
             case MotionEvent.ACTION_POINTER_UP:
@@ -81,9 +81,9 @@ class PlayerInputComponent implements InputComponent,
                 } else if (buttons.get(HUD.FLIP).contains(x, y)) {
                     // Player has released the flip button
                     mTransform.flip();
-                } /*else if (buttons.get(HUD.SHOOT).contains(x, y)) {
+                } else if (buttons.get(HUD.SHOOT).contains(x, y)) {
                     mPLS.spawnPlayerLaser(mTransform);
-                }*/
+                }
                 break;
         }
 

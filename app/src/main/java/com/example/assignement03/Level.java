@@ -10,19 +10,19 @@ class Level {
     // Keep track of specific types
     public static final int BACKGROUND_INDEX = 0;
     public static final int PLAYER_INDEX = 1;
-    /*public static final int FIRST_PLAYER_LASER = 2;
+    public static final int FIRST_PLAYER_LASER = 2;
     public static final int LAST_PLAYER_LASER = 4;
-    public static int mNextPlayerLaser;*/
+    public static int mNextPlayerLaser;
     public static final int FIRST_ENEMY = 5;
-    /*public static final int SECOND_ENEMY = 6;
+    public static final int SECOND_ENEMY = 6;
     public static final int THIRD_ENEMY = 7;
     public static final int FOURTH_ENEMY = 8;
     public static final int FIFTH_ENEMY = 9;
-    public static final int SIXTH_ENEMY = 10;*/
+    public static final int SIXTH_ENEMY = 10;
     public static final int LAST_ENEMY = 10;
-    /*public static final int FIRST_ALIEN_LASER = 11;
-    public static final int LAST_ALIEN_LASER = 15;
-    public static int mNextAlienLaser;*/
+    public static final int FIRST_ENEMY_LASER = 11;
+    public static final int LAST_ENEMY_LASER = 15;
+    public static int mNextENEMYLaser;
 
     // This will hold all the instances of GameObject
     private ArrayList<GameObject> objects;
@@ -48,18 +48,34 @@ class Level {
                 .create(new PlayerSpec()));
 
         // Spawn the player's lasers
-        /*for (int i = FIRST_PLAYER_LASER;
+        for (int i = FIRST_PLAYER_LASER;
              i != LAST_PLAYER_LASER + 1; i++) {
 
-            objects.add(i, factory
-                    .create(new PlayerLaserSpec()));
-        }*/
+            objects.add(i, factory.create(new PlayerLaserSpec()));
+        }
 
-        //mNextPlayerLaser = FIRST_PLAYER_LASER;
+        mNextPlayerLaser = FIRST_PLAYER_LASER;
 
-        // Create enemy
+        // Create some enemies
         objects.add(FIRST_ENEMY, factory
                 .create(new EnemyChaseSpec()));
+        objects.add(SECOND_ENEMY, factory
+                .create(new EnemyChaseSpec()));
+        objects.add(THIRD_ENEMY, factory
+                .create(new EnemyChaseSpec()));
+        objects.add(FOURTH_ENEMY, factory
+                .create(new EnemyChaseSpec()));
+        objects.add(FIFTH_ENEMY, factory
+                .create(new EnemyChaseSpec()));
+        objects.add(SIXTH_ENEMY, factory
+                .create(new EnemyChaseSpec()));
+
+        // Create some enemy lasers
+        for (int i = FIRST_ENEMY_LASER; i != LAST_ENEMY_LASER + 1; i++) {
+            objects.add(i, factory
+                    .create(new EnemyLaserSpec()));
+        }
+        mNextENEMYLaser = FIRST_ENEMY_LASER;
 
         return objects;
     }

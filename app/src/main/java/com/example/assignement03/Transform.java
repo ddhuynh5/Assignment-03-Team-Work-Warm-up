@@ -146,4 +146,20 @@ class Transform {
     RectF getCollider(){
         return mCollider;
     }
+
+    PointF getFiringLocation(float laserLength){
+        PointF mFiringLocation = new PointF();
+
+        if(mFacingRight) {
+            mFiringLocation.x = mLocation.x
+                    + (mObjectWidth / 8f);
+        }else
+        {
+            mFiringLocation.x = mLocation.x
+                    + (mObjectWidth / 8f) - (laserLength);
+        }
+        // Move the height down a bit of ship height from origin
+        mFiringLocation.y = mLocation.y + (mObjectHeight / 1.28f);
+        return mFiringLocation;
+    }
 }

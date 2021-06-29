@@ -9,11 +9,11 @@ class EnemyChaseMovementComponent implements MovementComponent {
 
     // Gives this class the ability to tell the game engine
     // to spawn a laser
-    //private AlienLaserSpawner alienLaserSpawner;
+    private EnemyLaserSpawner enemyLaserSpawner;
 
-    /*EnemyChaseMovementComponent(AlienLaserSpawner als){
-        alienLaserSpawner = als;
-    }*/
+    EnemyChaseMovementComponent(EnemyLaserSpawner als){
+        enemyLaserSpawner = als;
+    }
 
     @Override
     public boolean move(long fps, Transform t, Transform playerTransform) {
@@ -111,7 +111,7 @@ class EnemyChaseMovementComponent implements MovementComponent {
         // Shoot if the alien is within a ships height above,
         // below, or in line with the player?
         // This could be a hit or a miss
-        /*if(mShotRandom.nextInt(SHOT_CHANCE) == TAKE_SHOT) {
+        if(mShotRandom.nextInt(SHOT_CHANCE) == TAKE_SHOT) {
             if (Math.abs(playerLocation.y - location.y) < height) {
                 // Is the alien facing the right direction
                 // and close enough to the player
@@ -120,11 +120,11 @@ class EnemyChaseMovementComponent implements MovementComponent {
                         && Math.abs(playerLocation.x - location.x)
                         < screenWidth) {
                     // Fire!
-                    alienLaserSpawner.spawnAlienLaser(t);
+                    enemyLaserSpawner.spawnEnemyLaser(t);
                 }
 
             }
-        }*/
+        }
 
         return true;
     }
