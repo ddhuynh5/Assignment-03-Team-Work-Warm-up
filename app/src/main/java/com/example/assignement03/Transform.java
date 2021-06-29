@@ -109,10 +109,15 @@ class Transform {
     float getObjectHeight(){
         return mObjectHeight;
     }
+    float getObjectWidth() { return mObjectWidth; }
 
     void stopVertical(){
         mHeadingDown = false;
         mHeadingUp = false;
+    }
+    void stopHorizontal(){
+        mHeadingLeft = false;
+        mHeadingRight = false;
     }
 
     float getSpeed(){

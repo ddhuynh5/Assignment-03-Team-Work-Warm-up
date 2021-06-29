@@ -20,9 +20,6 @@ class Level {
     public static final int FIFTH_ENEMY = 9;
     public static final int SIXTH_ENEMY = 10;
     public static final int LAST_ENEMY = 10;
-    public static final int FIRST_ENEMY_LASER = 11;
-    public static final int LAST_ENEMY_LASER = 15;
-    public static int mNextENEMYLaser;
 
     // This will hold all the instances of GameObject
     private ArrayList<GameObject> objects;
@@ -69,13 +66,6 @@ class Level {
                 .create(new EnemyChaseSpec()));
         objects.add(SIXTH_ENEMY, factory
                 .create(new EnemyChaseSpec()));
-
-        // Create some enemy lasers
-        for (int i = FIRST_ENEMY_LASER; i != LAST_ENEMY_LASER + 1; i++) {
-            objects.add(i, factory
-                    .create(new EnemyLaserSpec()));
-        }
-        mNextENEMYLaser = FIRST_ENEMY_LASER;
 
         return objects;
     }
