@@ -9,7 +9,7 @@ import android.view.SurfaceView;
 
 import java.util.ArrayList;
 
-class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngineBroadcaster, EnemyLaserSpawner, PlayerLaserSpawner {
+class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngineBroadcaster, PlayerLaserSpawner {
     private Thread mThread = null;
     private long mFPS;
 
@@ -39,7 +39,7 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
         mParticleSystem = new ParticleSystem();
         // Even just 10 particles look good
         // But why have less when you can have more
-        mParticleSystem.init(1000);
+        mParticleSystem.init(5);
         mLevel = new Level(context, new PointF(size.x, size.y), this);
 
     }
@@ -68,21 +68,6 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
         }
 
         return true;
-    }
-
-    public void spawnEnemyLaser(Transform transform) {
-        ArrayList<GameObject> objects = mLevel.getGameObjects();
-        // Shoot laser IF AVAILABLE
-        // Pass in the transform of the ship
-        // that requested the shot to be fired
-        if (objects.get(Level.mNextENEMYLaser).spawn(transform)) {
-            Level.mNextENEMYLaser++;
-            mSoundEngine.playShoot();
-            if(Level.mNextENEMYLaser ==Level.LAST_ENEMY_LASER + 1) {
-                // Just used the last laser
-                Level.mNextENEMYLaser = Level.FIRST_ENEMY_LASER;
-            }
-        }
     }
 
     @Override

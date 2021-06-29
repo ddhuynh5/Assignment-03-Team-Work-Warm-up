@@ -7,7 +7,7 @@ import android.graphics.RectF;
 class PhysicsEngine {
 
     // This signature and much more will
-    //change later in the project
+    // change later in the project
     boolean update(long fps, ArrayList<GameObject> objects,
                    GameState gs, SoundEngine se,
                    ParticleSystem ps){
@@ -53,21 +53,21 @@ class PhysicsEngine {
                             // There has been a collision
                             // - but does it matter
                             switch (go1.getTag() + " with " + go2.getTag()){
-                                case "Player with Alien Laser":
+                                case "Player with Enemy Laser":
                                     playerHit = true;
                                     mGameState.loseLife(se);
 
                                     break;
 
-                                case "Player with Alien":
+                                case "Player with Enemy":
                                     playerHit = true;
                                     mGameState.loseLife(se);
 
                                     break;
 
-                                case "Player Laser with Alien":
+                                case "Player Laser with Enemy":
                                     mGameState.increaseScore();
-                                    // Respawn the alien
+                                    // Respawn the enemy
                                     ps.emitParticles(
                                             new PointF(
                                                     go2.getTransform().getLocation().x,

@@ -75,8 +75,8 @@ class GameObjectFactory {
                     object.setSpawner(new BackgroundSpawnComponent());
                     break;
                 case "EnemyChaseMovementComponent":
-                    object.setMovement(
-                            new EnemyChaseMovementComponent(mGameEngineReference));
+                    //object.setMovement(new EnemyChaseMovementComponent(mGameEngineReference));
+                    object.setMovement(new EnemyChaseMovementComponent());
                     break;
                 case "EnemyHorizontalSpawnComponent":
                     object.setSpawner(
