@@ -64,9 +64,8 @@ final class GameState {
     }
 
 
-    void loseLife(SoundEngine se){
+    void loseLife(){
         mNumShips--;
-        se.playPlayerExplode();
         if(mNumShips == 0){
             pause();
             endGame();
@@ -131,7 +130,4 @@ final class GameState {
     boolean getGameOver(){
         return mGameOver;
     }
-
-
-
 }

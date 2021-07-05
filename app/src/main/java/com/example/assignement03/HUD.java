@@ -63,7 +63,6 @@ class HUD {
                 mScreenWidth - buttonPadding*10 - buttonWidth*10,
                 mScreenHeight - buttonPadding*3);
 
-
         Rect flip = new Rect(mScreenWidth -
                 buttonPadding - buttonWidth,
                 mScreenHeight - buttonHeight -
@@ -104,7 +103,7 @@ class HUD {
         c.drawText("Hi: " + gs.getHighScore(),
                 mTextFormatting,mTextFormatting,p);
 
-        c.drawText("Scrore: " + gs.getScore(),
+        c.drawText("Score: " + gs.getScore(),
                 mTextFormatting,mTextFormatting * 2,p);
 
         c.drawText("Lives: " + gs.getNumShips(),
@@ -139,6 +138,4 @@ class HUD {
     ArrayList<Rect> getControls(){
         return controls;
     }
-
-
 }

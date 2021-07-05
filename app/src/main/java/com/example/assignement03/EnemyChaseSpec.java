@@ -4,7 +4,7 @@ import android.graphics.PointF;
 
 public class EnemyChaseSpec extends ObjectSpec{
     // This is all the unique specifications
-    // for an alien that chases the player
+    // for an enemy that chases the player
     private static final String tag = "Enemy";
     private static final String bitmapName = "enemy_chase";
     private static final float speed = 4f;

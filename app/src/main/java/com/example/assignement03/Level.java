@@ -20,6 +20,7 @@ class Level {
     public static final int FIFTH_ENEMY = 9;
     public static final int SIXTH_ENEMY = 10;
     public static final int LAST_ENEMY = 10;
+    public static final int GOLD_INDEX = 3;
 
     // This will hold all the instances of GameObject
     private ArrayList<GameObject> objects;
@@ -67,12 +68,12 @@ class Level {
         objects.add(SIXTH_ENEMY, factory
                 .create(new EnemyChaseSpec()));
 
+        /*objects.add(GOLD_INDEX, factory
+                .create(new GoldSpec()));*/
+
         return objects;
     }
-
     ArrayList<GameObject> getGameObjects(){
         return objects;
     }
-
-
 }

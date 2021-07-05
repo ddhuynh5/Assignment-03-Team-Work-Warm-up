@@ -10,26 +10,22 @@ class EnemyChaseMovementComponent implements MovementComponent {
     @Override
     public boolean move(long fps, Transform t, Transform playerTransform) {
 
-        // 1 in 100 chance of shot being fired when in line with player
-        final int TAKE_SHOT=0; // Arbitrary
-        final int SHOT_CHANCE = 100;
-
         // How high is the screen?
         float screenWidth = t.getmScreenSize().x;
         // Where is the player?
         PointF playerLocation = playerTransform.getLocation();
 
-        // How tall is the ship
+        // How tall is the enemy
         float height = t.getObjectHeight();
-        // Is the ship facing right?
+        // Is the enemy facing right?
         boolean facingRight =t.getFacingRight();
-        // How far off before the ship doesn't bother chasing?
+        // How far off before the enemy doesn't bother chasing?
         float mChasingDistance = t.getmScreenSize().x / 3f;
         // How far can the AI see?
         float mSeeingDistance = t.getmScreenSize().x / 1.5f;
-        // Where is the ship?
+        // Where is the enemy?
         PointF location = t.getLocation();
-        // How fast is the ship?
+        // How fast is the enemy?
         float speed = t.getSpeed();
 
         // Relative speed difference with player
@@ -50,11 +46,11 @@ class EnemyChaseMovementComponent implements MovementComponent {
             }
         }
 
-        // Can the Alien "see" the player? If so try and align vertically
+        // Can the enemy "see" the player? If so try and align vertically
         if (Math.abs(location.x - playerLocation.x)
                 <= mSeeingDistance) {
 
-            // Use a cast to get rid of unnecessary floats that make ship judder
+            // Use a cast to get rid of unnecessary floats that make enemy judder
             if ((int) location.y - playerLocation.y
                     < -verticalSearchBounce) {
 
@@ -67,7 +63,7 @@ class EnemyChaseMovementComponent implements MovementComponent {
 
             // Compensate for movement relative to player-
             // but only when in view.
-            // Otherwise alien will disappear miles off to one side
+            // Otherwise enemy will disappear miles off to one side
             if(!playerTransform.getFacingRight()){
                 location.x += speed * slowDownRelativeToPlayer / fps;
             } else{

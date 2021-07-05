@@ -18,7 +18,6 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
 
 
     private GameState mGameState;
-    private SoundEngine mSoundEngine;
     HUD mHUD;
     Renderer mRenderer;
     ParticleSystem mParticleSystem;
@@ -31,7 +30,6 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
 
         mUIController = new UIController(this);
         mGameState = new GameState(this, context);
-        mSoundEngine = new SoundEngine(context);
         mHUD = new HUD(size);
         mRenderer = new Renderer(this);
         mPhysicsEngine = new PhysicsEngine();
@@ -57,7 +55,6 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
                 .spawn(transform)) {
 
             Level.mNextPlayerLaser++;
-            mSoundEngine.playShoot();
             if (Level.mNextPlayerLaser ==
                     Level.LAST_PLAYER_LASER + 1) {
 
@@ -81,11 +78,10 @@ class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngin
                 // in a new way
 
                 // This call to update will evolve with the project
-                if(mPhysicsEngine.update(mFPS,objects, mGameState, mSoundEngine, mParticleSystem)){
+                if(mPhysicsEngine.update(mFPS,objects, mGameState, mParticleSystem)){
                     // Player hit
                     deSpawnReSpawn();
                 }
-
             }
 
             // Draw all the game objects here

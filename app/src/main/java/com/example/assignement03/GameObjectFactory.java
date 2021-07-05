@@ -75,7 +75,6 @@ class GameObjectFactory {
                     object.setSpawner(new BackgroundSpawnComponent());
                     break;
                 case "EnemyChaseMovementComponent":
-                    //object.setMovement(new EnemyChaseMovementComponent(mGameEngineReference));
                     object.setMovement(new EnemyChaseMovementComponent());
                     break;
                 case "EnemyHorizontalSpawnComponent":
@@ -85,6 +84,10 @@ class GameObjectFactory {
                 case "EnemyVerticalSpawnComponent":
                     object.setSpawner(
                             new EnemyVerticalSpawnComponent());
+                    break;
+                case "GoldSpawnComponent":
+                    object.setSpawner(
+                            new GoldSpawnComponent());
                     break;
                 default:
                     // Error unidentified component

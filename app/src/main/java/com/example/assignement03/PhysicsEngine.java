@@ -8,9 +8,7 @@ class PhysicsEngine {
 
     // This signature and much more will
     // change later in the project
-    boolean update(long fps, ArrayList<GameObject> objects,
-                   GameState gs, SoundEngine se,
-                   ParticleSystem ps){
+    boolean update(long fps, ArrayList<GameObject> objects, GameState gs, ParticleSystem ps){
 
         // Update all the GameObjects
         for (GameObject object : objects) {
@@ -23,13 +21,12 @@ class PhysicsEngine {
             ps.update(fps);
         }
 
-        return detectCollisions(gs, objects, se, ps);
+        return detectCollisions(gs, objects, ps);
     }
     // Collision detection method will go here
     private boolean detectCollisions(
             GameState mGameState,
             ArrayList<GameObject> objects,
-            SoundEngine se,
             ParticleSystem ps ){
 
         boolean playerHit = false;
@@ -53,42 +50,41 @@ class PhysicsEngine {
                             // There has been a collision
                             // - but does it matter
                             switch (go1.getTag() + " with " + go2.getTag()){
-                                case "Player with Enemy Laser":
-                                    playerHit = true;
-                                    mGameState.loseLife(se);
-
-                                    break;
-
                                 case "Player with Enemy":
                                     playerHit = true;
-                                    mGameState.loseLife(se);
+                                    mGameState.loseLife();
 
                                     break;
 
                                 case "Player Laser with Enemy":
                                     mGameState.increaseScore();
-                                    // Respawn the enemy
+                                    // Enemy explodes into particles
                                     ps.emitParticles(
                                             new PointF(
                                                     go2.getTransform().getLocation().x,
                                                     go2.getTransform().getLocation().y
-
                                             )
                                     );
+                                    // allow enemy to drop gold on death
+                                    /*go2.setInactive();;
+                                    go2.spawn(objects.get(Level
+                                    .GOLD_INDEX).getTransform());*/
+
+                                    // Respawn the enemy
                                     go2.setInactive();
                                     go2.spawn(objects.get(Level
                                             .PLAYER_INDEX).getTransform());
 
                                     go1.setInactive();
-                                    se.playAlienExplode();
 
                                     break;
+
+                                /*case "Player with Gold Coin":
+                                    break;*/
 
                                 default:
                                     break;
                             }
-
-
                         }
                     }
                 }

@@ -9,7 +9,5 @@ class PlayerSpawnComponent implements SpawnComponent {
         t.setLocation(
                 t.getmScreenSize().x/2,
                 t.getmScreenSize().y/2);
-
-
     }
 }
